@@ -105,13 +105,13 @@ def stock_history_page(request):
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
-def create_superuser(request):
-    if User.objects.filter(username='admin').exists():
-        return HttpResponse("Superuser already exists.")
+# def create_superuser(request):
+#     if User.objects.filter(username='admin').exists():
+#         return HttpResponse("Superuser already exists.")
 
-    User.objects.create_superuser(
-        username='admin',
-        email='admin@example.com',
-        password='admin123'  # Change to a strong password
-    )
-    return HttpResponse("Superuser created successfully.")
+#     User.objects.create_superuser(
+#         username='admin',
+#         email='admin@example.com',
+#         password='admin123'  # Change to a strong password
+#     )
+#     return HttpResponse("Superuser created successfully.")

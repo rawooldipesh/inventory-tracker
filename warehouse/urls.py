@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path, include
 
-from inventory.views import create_superuser
 
 
 
@@ -26,7 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('inventory.urls')),  
     path("", include('inventory.urls')),
-    path('create-superuser/', create_superuser),  # temp route
 
         
 
