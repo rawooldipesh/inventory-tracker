@@ -100,3 +100,18 @@ def stock_summary_page(request):
 def stock_history_page(request):
     details = StockDetail.objects.select_related('transaction', 'product').order_by('-transaction__timestamp')
     return render(request, 'inventory/stock_history.html', {'details': details})
+
+
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+def create_superuser(request):
+    if User.objects.filter(username='admin').exists():
+        return HttpResponse("Superuser already exists.")
+
+    User.objects.create_superuser(
+        username='admin',
+        email='admin@example.com',
+        password='admin123'  # Change to a strong password
+    )
+    return HttpResponse("Superuser created successfully.")
