@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Summary</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+    <ul style="color: red;">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+    <!-- 🔗 Navigation Links -->
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'stock-summary-ui' %}">Inventory</a> |
+        <a href="{% url 'stock-history' %}">Stock History</a>
+    </div>
+
+    <h1>Current Inventory</h1>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Stock</th>
+        </tr>
+        {% for item in stock %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.stock }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+
+    <h2>Update Stock</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="product">Product:</label>
+        <select name="product_id" required>
+            {% for item in stock %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" min="1" required><br><br>
+
+        <label for="movement_type">Movement:</label>
+        <select name="movement_type" required>
+            <option value="IN">IN</option>
+            <option value="OUT">OUT</option>
+        </select><br><br>
+
+        <button type="submit">Update Stock</button>
+    </form>
+</body>
+</html>

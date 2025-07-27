@@ -1,0 +1,21 @@
+# Ignore virtual environments
+venv/
+ENV/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# SQLite DB file (optional – keep if needed)
+db.sqlite3
+
+# VS Code settings
+.vscode/
+
+# Django static files (optional if collected)
+static/
+
+# Other common ignores
+*.log
+*.DS_Store

@@ -1,0 +1,17 @@
+<h2>Stock Movement History</h2>
+<table border="1">
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Type</th>
+    <th>Timestamp</th>
+  </tr>
+  {% for detail in details %}
+  <tr>
+    <td>{{ detail.product.name }}</td>
+    <td>{{ detail.quantity }}</td>
+    <td>{{ detail.transaction.type }}</td>
+    <td>{{ detail.transaction.timestamp }}</td>
+  </tr>
+  {% endfor %}
+</table>
