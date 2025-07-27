@@ -1,4 +1,4 @@
-from pyexpat.errors import messages
+from django.contrib import messages  # ✅
 from rest_framework import generics
 from .models import Product, StockTransaction
 from .serializers import ProductSerializer, StockTransactionSerializer
